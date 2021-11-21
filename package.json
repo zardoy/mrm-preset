@@ -9,12 +9,22 @@
     "eslint",
     "action"
   ],
+  "bin": {
+    "mrm": "bin.js"
+  },
   "scripts": {
     "watch": "tsc --watch",
     "build": "tsc"
   },
   "dependencies": {
     "fs-extra": "^10.0.0",
+    "kleur": "^4.1.4",
+    "listify": "^1.0.3",
+    "lodash": "^4.17.21",
+    "longest": "^2.0.1",
+    "middleearth-names": "^1.1.0",
+    "minimist": "^1.2.5",
+    "mrm": "^3.0.10",
     "mrm-core": "^6.1.7",
     "mrm-task-license": "^4.0.8",
     "user-meta": "^1.0.0"
