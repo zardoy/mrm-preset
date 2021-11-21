@@ -1,5 +1,10 @@
+import { lines } from 'mrm-core'
+import fsExtra from 'fs-extra'
 import { copyFiles } from 'mrm-core'
+import { join } from 'path'
 
 module.exports = () => {
-    copyFiles(__dirname, '.gitignore', { overwrite: true })
+    lines('.gitignore')
+        .set([fsExtra.readFileSync(join(__dirname, '_gitignore'), 'utf-8')])
+        .save()
 }
