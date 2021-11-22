@@ -1,5 +1,5 @@
 import fsExtra from 'fs-extra'
-import { install, lines } from 'mrm-core'
+import { install, lines, packageJson } from 'mrm-core'
 import { join } from 'path'
 
 module.exports = () => {
@@ -12,4 +12,6 @@ module.exports = () => {
     lines(jestConfigFile)
         .set([fsExtra.readFileSync(join(__dirname, jestConfigFile), 'utf-8')])
         .save()
+
+    packageJson().appendScript('test', 'jest')
 }
