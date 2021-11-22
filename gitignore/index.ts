@@ -1,6 +1,5 @@
 import { lines } from 'mrm-core'
 import fsExtra from 'fs-extra'
-import { copyFiles } from 'mrm-core'
 import { join } from 'path'
 
 module.exports = () => {

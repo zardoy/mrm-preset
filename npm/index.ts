@@ -1,4 +1,4 @@
-import { json, packageJson } from 'mrm-core'
+import { file, packageJson } from 'mrm-core'
 import { basename } from 'path'
 import { PackageJson } from 'type-fest'
 import userMeta from 'user-meta'
@@ -8,13 +8,20 @@ module.exports = () => {
         console.warn('package.json already exists')
         return
     }
-    json('package.json', {
-        name: basename(process.cwd()),
-        version: '0.0.0-dev',
-        author: `${userMeta.name} <${userMeta.email}>`,
-        license: 'MIT',
-        scripts: {},
-        dependencies: {},
-        devDependencies: {},
-    } as PackageJson).save()
+
+    file('package.json').save(
+        JSON.stringify(
+            {
+                name: basename(process.cwd()),
+                version: '0.0.0-dev',
+                author: `${userMeta.name} <${userMeta.email}>`,
+                license: 'MIT',
+                scripts: {},
+                dependencies: {},
+                devDependencies: {},
+            } as PackageJson,
+            undefined,
+            4,
+        ),
+    )
 }
