@@ -1,3 +1,5 @@
+//@ts-check
+
 /** @type{import('@jest/types').Config.InitialOptions} */
 const config = {
     testPathIgnorePatterns: ['/build/', '/fixtures/'],
