@@ -13,5 +13,5 @@ module.exports = () => {
         .set([fsExtra.readFileSync(join(__dirname, jestConfigFile), 'utf-8')])
         .save()
 
-    packageJson().appendScript('test', 'jest')
+    packageJson().appendScript('test', 'jest').save()
 }
