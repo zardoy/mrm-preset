@@ -3,7 +3,7 @@ import { install, lines, packageJson } from 'mrm-core'
 import { join } from 'path'
 
 module.exports = () => {
-    install(['jest', '@types/jest', 'esbuild-runner'], {
+    install(['jest', '@types/jest', 'esbuild-runner', 'esbuild'], {
         dev: true,
         pnpm: true,
     })
