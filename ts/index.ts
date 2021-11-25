@@ -38,7 +38,7 @@ module.exports = ({ preset }) => {
 module.exports.parameters = {
     preset: {
         type: 'list',
-        choices: Object.values(presets),
+        choices: Object.keys(presets),
         validate(value) {
             return value ? true : '-i is required'
         },
