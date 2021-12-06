@@ -31,8 +31,7 @@ module.exports = ({ preset }) => {
         .set([JSON.stringify(tsconfig, undefined, 4)])
         .save()
 
-    const vscodeExtension = Object.keys(packageJson().get().dependencies ?? {}).includes('vscode-framework')
-    fsExtra.ensureFileSync(`src/${vscodeExtension ? 'extension.ts' : 'index.ts'}.ts`)
+    fsExtra.ensureFileSync(`src/index.ts`)
 }
 
 module.exports.parameters = {

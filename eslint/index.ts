@@ -3,7 +3,7 @@ import fsExtra from 'fs-extra'
 import { join } from 'path'
 
 module.exports = () => {
-    install(['eslint@^7', 'eslint-plugin-zardoy-config'], {
+    install(['eslint', 'eslint-config-zardoy'], {
         dev: true,
         pnpm: true,
     })

@@ -17,7 +17,7 @@ module.exports = ({ preset }) => {
 module.exports.parameters = {
     preset: {
         type: 'list',
-        choices: ['npm', 'vscode' /*, 'pnpm-monorepo' */],
+        choices: ['npm', 'vscode', 'vscode-tested' /*, 'pnpm-monorepo' */],
         validate(value) {
             return value ? true : 'preset is required'
         },
