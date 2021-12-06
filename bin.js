@@ -11,6 +11,10 @@ const { padEnd, sortBy } = require('lodash')
 const { random } = require('middleearth-names')
 const { run, getConfig, getAllTasks } = require('mrm/src/index.js')
 const { MrmUnknownTask, MrmInvalidTask, MrmUnknownAlias, MrmUndefinedOption } = require('mrm/src/errors.js')
+const latestVersion = require('latest-version')
+const semver = require('semver')
+const { execSync } = require('child_process')
+const isOnline = require('is-online')
 
 const defaultDirectories = [path.resolve(homedir(), 'dotfiles/mrm'), path.resolve(homedir(), '.mrm')]
 
@@ -32,6 +36,14 @@ process.on('unhandledRejection', err => {
 })
 
 async function main() {
+    console.time('boot')
+    const { name, version } = require('./package.json')
+    // auto self-update
+    if ((await isOnline()) && semver.lt(version, await latestVersion(name))) {
+        execSync(`pnpm i -g ${name}`, {
+            stdio: 'inherit',
+        })
+    }
     const argv = minimist(process.argv.slice(2), { alias: { i: 'interactive' } })
     const tasks = argv._
 
@@ -46,6 +58,7 @@ async function main() {
     if (tasks.length === 0 || tasks[0] === 'help') {
         commandHelp()
     } else {
+        console.timeEnd('boot')
         run(tasks, directories, options, { interactive: true, ...argv }).catch(err => {
             if (err.constructor === MrmUnknownAlias) {
                 printError(err.message)
