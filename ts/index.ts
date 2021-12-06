@@ -12,7 +12,7 @@ const presets = {
 module.exports = ({ preset }) => {
     const presetDeps: Partial<Record<keyof typeof presets, string[]>> = {
         node: ['@types/node'],
-        react: ['react', '@types/react', 'react-dom', '@types/react-dom'],
+        react: ['react', '@types/react', 'react-dom', '@types/react-dom', '@zardoy/react-util'],
     }
 
     install(['typescript', '@zardoy/tsconfig', ...(presetDeps[preset] ?? [])], {

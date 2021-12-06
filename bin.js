@@ -39,10 +39,11 @@ async function main() {
     console.time('boot')
     const { name, version } = require('./package.json')
     // auto self-update
-    if ((await isOnline()) && semver.lt(version, await latestVersion(name))) {
+    if (!version.startsWith('0.0.0') && (await isOnline()) && semver.lt(version, await latestVersion(name))) {
         execSync(`pnpm i -g ${name}`, {
             stdio: 'inherit',
         })
+        throw new Error('restart.')
     }
     const argv = minimist(process.argv.slice(2), { alias: { i: 'interactive' } })
     const tasks = argv._
