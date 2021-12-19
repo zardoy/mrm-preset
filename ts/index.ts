@@ -31,7 +31,7 @@ module.exports = ({ preset }) => {
         .set([JSON.stringify(tsconfig, undefined, 4)])
         .save()
 
-    fsExtra.ensureFileSync(`src/index.ts`)
+    fsExtra.ensureFileSync(preset === 'react' ? 'src/index.tsx' : 'src/index.ts')
 }
 
 module.exports.parameters = {
