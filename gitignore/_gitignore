@@ -21,6 +21,7 @@ experiment-*
 .env.*.local
 
 .vscode-test
+.vscode-test-web
 .eslintcache
 Thumbs.db
 .idea/
