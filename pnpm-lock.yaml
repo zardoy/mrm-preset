@@ -4,6 +4,7 @@ specifiers:
   '@types/fs-extra': ^9.0.13
   '@types/node': ^16.11.8
   '@zardoy/tsconfig': ^1.2.2
+  '@zardoy/utils': ^0.0.4
   change-case: ^4.1.2
   fs-extra: ^10.0.0
   is-online: ^9.0.1
@@ -23,6 +24,7 @@ specifiers:
   user-meta: ^1.0.0
 
 dependencies:
+  '@zardoy/utils': 0.0.4
   change-case: 4.1.2
   fs-extra: 10.0.0
   is-online: 9.0.1
@@ -118,6 +120,15 @@ packages:
     dependencies:
       typescript: 4.5.2
     dev: true
+
+  /@zardoy/utils/0.0.4:
+    resolution: {integrity: sha512-XByd7HzxgwJi85o3oTSJDhk6b3H4w21NYHIqX3WtQ+tGBFPLldo8rdzr31oms6coeXvPVwRmoTGkJmAyHTJQRw==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+    dependencies:
+      lodash.compact: 3.0.1
+      rambda: 6.9.0
+      type-fest: 2.5.4
+    dev: false
 
   /aggregate-error/3.1.0:
     resolution: {integrity: sha512-4I7Td01quW/RpocfNayFdFVk1qSuoh0E7JrbRJ16nH01HhKFQ88INq9Sd+nd72zqRySlr9BmDA8xlEJ6vJMrYA==}
@@ -1181,6 +1192,10 @@ packages:
       p-locate: 4.1.0
     dev: false
 
+  /lodash.compact/3.0.1:
+    resolution: {integrity: sha1-VAzjg3dFl1gHRx4WtKK6IeclbKU=}
+    dev: false
+
   /lodash/4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
     dev: false
@@ -1602,6 +1617,10 @@ packages:
     engines: {node: '>=10'}
     dev: false
 
+  /rambda/6.9.0:
+    resolution: {integrity: sha512-yosVdGg1hNGkXPzqGiOYNEpXKjEOxzUCg2rB0l+NKdyCaSf4z+i5ojbN0IqDSezMMf71YEglI+ZUTgTffn5afw==}
+    dev: false
+
   /rc/1.2.8:
     resolution: {integrity: sha512-y3bGgqKj3QBdxLbLkomlohkvsA8gdAiUQlSBJnBhfn+BPxg4bc62d8TcBW15wavDfgexCgccckhcZvywyQYPOw==}
     hasBin: true
@@ -1947,7 +1966,6 @@ packages:
   /type-fest/2.5.4:
     resolution: {integrity: sha512-zyPomVvb6u7+gJ/GPYUH6/nLDNiTtVOqXVUHtxFv5PmZQh6skgfeRtFYzWC01T5KeNWNIx5/0P111rKFLlkFvA==}
     engines: {node: '>=12.20'}
-    dev: true
 
   /typedarray-to-buffer/3.1.5:
     resolution: {integrity: sha512-zdu8XMNEDepKKR+XYOXAVPtWui0ly0NtohUscw+UmaHiAWT8hrV1rr//H6V+0DvJ3OQ19S979M0laLfX8rm82Q==}

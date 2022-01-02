@@ -26,3 +26,4 @@ Thumbs.db
 .idea/
 
 */index.js
+util.js

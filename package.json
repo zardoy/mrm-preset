@@ -3,13 +3,6 @@
   "version": "0.0.0-dev",
   "author": "Vitaly Turovsky <vital2580@icloud.com>",
   "license": "MIT",
-  "files": [
-    "*/index.js",
-    "gitignore",
-    "eslint",
-    "action",
-    "jest"
-  ],
   "bin": {
     "mrm": "bin.js"
   },
@@ -18,6 +11,7 @@
     "build": "tsc"
   },
   "dependencies": {
+    "@zardoy/utils": "^0.0.4",
     "change-case": "^4.1.2",
     "fs-extra": "^10.0.0",
     "is-online": "^9.0.1",
