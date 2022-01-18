@@ -11,3 +11,8 @@ export const copyAllFiles = (__dirname: string) => {
             .save()
     }
 }
+
+export const ensureLicense = () => {
+    if (fs.existsSync('LICENSE') || fs.existsSync('LICENSE.md')) return
+    require('license/index')()
+}
