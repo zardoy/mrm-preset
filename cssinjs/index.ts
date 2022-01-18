@@ -18,4 +18,6 @@ module.exports = () => {
             true,
         )
     }
+    if (!entrypointContents.includes("import 'tailwindcss/base.css'")) console.error("don't forget to add base styles!")
+    if (entrypointContents.includes("import 'tailwindcss/tailwind.css'")) console.error("don't forget to remove tailwind styles!")
 }
