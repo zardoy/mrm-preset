@@ -1,0 +1,5 @@
+*.ts
+pnpm-lock.yaml
+tsconfig.json
+*.tgz
+.github

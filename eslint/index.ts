@@ -1,6 +1,5 @@
-import { install, lines } from 'mrm-core'
-import fsExtra from 'fs-extra'
-import { join } from 'path'
+import { install, packageJson } from 'mrm-core'
+import { copyAllFiles } from '../util'
 
 module.exports = () => {
     install(['eslint', 'eslint-config-zardoy'], {
@@ -8,7 +7,7 @@ module.exports = () => {
         pnpm: true,
     })
 
-    lines('.eslintrc.json')
-        .set([fsExtra.readFileSync(join(__dirname, '.eslintrc.json'), 'utf-8')])
-        .save()
+    copyAllFiles(__dirname)
+
+    packageJson().appendScript('lint', 'eslint src/**').save()
 }
