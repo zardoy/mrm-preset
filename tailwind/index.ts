@@ -1,9 +1,11 @@
 import { install } from 'mrm-core'
 import { copyAllFiles } from '../util'
 
-module.exports = () => {
+module.exports = (installPostcss = true) => {
     copyAllFiles(__dirname)
-    install('tailwindcss postcss autoprefixer'.split(' '), {
+    const packages = 'tailwindcss autoprefixer'.split(' ')
+    if (installPostcss) packages.push('postcss')
+    install(packages, {
         pnpm: true,
     })
 }

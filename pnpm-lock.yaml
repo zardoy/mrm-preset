@@ -1,11 +1,13 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@types/dedent': ^0.7.0
   '@types/fs-extra': ^9.0.13
   '@types/node': ^16.11.8
   '@zardoy/tsconfig': ^1.2.2
   '@zardoy/utils': ^0.0.4
   change-case: ^4.1.2
+  dedent: ^0.7.0
   fs-extra: ^10.0.0
   is-online: ^9.0.1
   kleur: ^4.1.4
@@ -26,6 +28,7 @@ specifiers:
 dependencies:
   '@zardoy/utils': 0.0.4
   change-case: 4.1.2
+  dedent: 0.7.0
   fs-extra: 10.0.0
   is-online: 9.0.1
   kleur: 4.1.4
@@ -42,6 +45,7 @@ dependencies:
   user-meta: 1.0.0
 
 devDependencies:
+  '@types/dedent': 0.7.0
   '@types/fs-extra': 9.0.13
   '@types/node': 16.11.8
   '@zardoy/tsconfig': 1.2.2_typescript@4.5.2
@@ -86,6 +90,10 @@ packages:
       '@types/node': 16.11.8
       '@types/responselike': 1.0.0
     dev: false
+
+  /@types/dedent/0.7.0:
+    resolution: {integrity: sha512-EGlKlgMhnLt/cM4DbUSafFdrkeJoC9Mvnj0PUCU7tFmTjMjNRT957kXCx0wYm3JuEq4o4ZsS5vG+NlkM2DMd2A==}
+    dev: true
 
   /@types/fs-extra/9.0.13:
     resolution: {integrity: sha512-nEnwB++1u5lVDM2UI4c1+5R+FYaKfaAzS4OococimjVm3nQw3TuzH5UNsocrcTBbhnerblyHj4A49qXbIiZdpA==}
@@ -535,6 +543,10 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       mimic-response: 3.1.0
+    dev: false
+
+  /dedent/0.7.0:
+    resolution: {integrity: sha1-JJXduvbrh0q7Dhvp3yLS5aVEMmw=}
     dev: false
 
   /deep-extend/0.6.0:
