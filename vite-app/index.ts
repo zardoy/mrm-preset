@@ -8,6 +8,7 @@ module.exports = () => {
     require('../pkg/index')()
     require('../ts/index')({ preset: 'react' })
     require('../eslint/index')()
+    require('../cssinjs/index')()
 
     install(['vite', '@zardoy/vit'], {
         pnpm: true,
