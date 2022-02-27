@@ -18,7 +18,7 @@ module.exports = () => {
                 // have no idea how to retrive name like that
                 author: 'zardoy',
                 categories: [],
-                contributors: {} as any,
+                contributes: {} as any,
                 license: 'MIT',
                 scripts: {
                     start: 'vscode-framework start',
