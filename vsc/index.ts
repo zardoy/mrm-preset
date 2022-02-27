@@ -2,6 +2,7 @@ import { file, install, packageJson } from 'mrm-core'
 import { basename } from 'path'
 import { PackageJson } from 'type-fest'
 import fsExtra from 'fs-extra'
+import { capitalCase } from 'change-case'
 
 /** New VSCode Extension */
 module.exports = () => {
@@ -14,9 +15,10 @@ module.exports = () => {
         JSON.stringify(
             {
                 name: basename(process.cwd()),
-                version: '0.0.0-dev',
+                displayName: capitalCase(basename(process.cwd())),
                 // have no idea how to retrive name like that
-                author: 'zardoy',
+                publisher: 'zardoy',
+                version: '0.0.0-dev',
                 license: 'MIT',
                 categories: null, // let IDE highlight incorrect type so user specifies correct one
                 contributes: {} as any,
