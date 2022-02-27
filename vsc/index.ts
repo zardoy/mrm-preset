@@ -30,7 +30,7 @@ module.exports = () => {
             4,
         ),
     )
-    install(['vscode-framework'], {
+    install(['vscode-framework', '@types/vscode'], {
         pnpm: true,
     })
     fsExtra.ensureFileSync(`src/extension.ts`)
