@@ -17,9 +17,9 @@ module.exports = () => {
                 version: '0.0.0-dev',
                 // have no idea how to retrive name like that
                 author: 'zardoy',
-                categories: [],
-                contributes: {} as any,
                 license: 'MIT',
+                categories: null, // let IDE highlight incorrect type so user specifies correct one
+                contributes: {} as any,
                 scripts: {
                     start: 'vscode-framework start',
                 },
