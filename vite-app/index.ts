@@ -7,11 +7,11 @@ module.exports = () => {
     if (!fsExtra.existsSync('index.html')) require('../html/index')()
     require('../pkg/index')()
     require('../ts/index')({ preset: 'react' })
-    require('../eslint/index')()
-    require('../cssinjs/index')()
 
     install(['vite', '@zardoy/vit'], {
         pnpm: true,
     })
     packageJson().prependScript('start', 'vit').prependScript('build', 'vit build').save()
+    require('../cssinjs/index')()
+    require('../eslint/index')()
 }
