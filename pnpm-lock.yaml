@@ -22,6 +22,7 @@ specifiers:
   mrm-task-license: ^4.0.8
   semver: ^7.3.5
   type-fest: ^2.5.4
+  typed-jsonfile: ^0.2.1
   typescript: ^4.5.2
   user-meta: ^1.0.0
 
@@ -42,6 +43,7 @@ dependencies:
   mrm-core: 6.1.7
   mrm-task-license: 4.0.8
   semver: 7.3.5
+  typed-jsonfile: 0.2.1
   user-meta: 1.0.0
 
 devDependencies:
@@ -1120,6 +1122,10 @@ packages:
     resolution: {integrity: sha512-4bV5BfR2mqfQTJm+V5tPPdf+ZpuhiIvTuAB5g8kcrXOZpTT/QwwVRWBywX1ozr6lEuPdbHxwaJlm9G6mI2sfSQ==}
     dev: false
 
+  /jsonc-parser/3.0.0:
+    resolution: {integrity: sha512-fQzRfAbIBnR0IQvftw9FJveWiHp72Fg20giDrHz6TdfB12UH/uue0D3hm57UB5KgAVuniLMCaS8P1IMj9NR7cA==}
+    dev: false
+
   /jsonfile/4.0.0:
     resolution: {integrity: sha1-h3Gq4HmbZAdrdmQPygWPnBDjPss=}
     optionalDependencies:
@@ -1978,6 +1984,15 @@ packages:
   /type-fest/2.5.4:
     resolution: {integrity: sha512-zyPomVvb6u7+gJ/GPYUH6/nLDNiTtVOqXVUHtxFv5PmZQh6skgfeRtFYzWC01T5KeNWNIx5/0P111rKFLlkFvA==}
     engines: {node: '>=12.20'}
+
+  /typed-jsonfile/0.2.1:
+    resolution: {integrity: sha512-8G2jqDOjg2reeq0Af3LYb1hY9bbmDYdnleAPQ6o74IPBJ5OxTjbG89TNoXGVGhy1+M16oFHmLIFfMEthQo3lYA==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+    dependencies:
+      jsonc-parser: 3.0.0
+      jsonfile: 6.1.0
+      type-fest: 2.5.4
+    dev: false
 
   /typedarray-to-buffer/3.1.5:
     resolution: {integrity: sha512-zdu8XMNEDepKKR+XYOXAVPtWui0ly0NtohUscw+UmaHiAWT8hrV1rr//H6V+0DvJ3OQ19S979M0laLfX8rm82Q==}

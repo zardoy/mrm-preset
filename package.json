@@ -28,6 +28,7 @@
     "mrm-core": "^6.1.7",
     "mrm-task-license": "^4.0.8",
     "semver": "^7.3.5",
+    "typed-jsonfile": "^0.2.1",
     "user-meta": "^1.0.0"
   },
   "keywords": [
