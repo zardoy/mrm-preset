@@ -1,9 +1,11 @@
 import { lines } from 'mrm-core'
 import fsExtra from 'fs-extra'
 import { join } from 'path'
+import { hasVscodeFramework } from '../util'
 
-module.exports = () => {
-    lines('.gitignore')
-        .set([fsExtra.readFileSync(join(__dirname, '_gitignore'), 'utf-8')])
-        .save()
+module.exports = async () => {
+    let gitignore = fsExtra.readFileSync(join(__dirname, '_gitignore'), 'utf-8')
+
+    if (await hasVscodeFramework()) gitignore = [...gitignore.split('\n'), 'src/generated.ts'].join('\n')
+    lines('.gitignore').set([gitignore]).save()
 }
