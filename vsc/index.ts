@@ -3,6 +3,7 @@ import { basename } from 'path'
 import { PackageJson } from 'type-fest'
 import fsExtra from 'fs-extra'
 import { capitalCase } from 'change-case'
+import { ensureGitignore } from '../util'
 
 /** New VSCode Extension */
 module.exports = () => {
@@ -35,5 +36,6 @@ module.exports = () => {
     install(['vscode-framework', '@types/vscode'], {
         pnpm: true,
     })
+    ensureGitignore()
     fsExtra.ensureFileSync(`src/extension.ts`)
 }
