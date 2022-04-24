@@ -1,9 +1,10 @@
 import { install, packageJson } from 'mrm-core'
 import fsExtra from 'fs-extra'
-import { ensureLicense } from '../util'
+import { ensureGitignore, ensureLicense } from '../util'
 
 module.exports = () => {
     ensureLicense()
+    ensureGitignore()
     if (!fsExtra.existsSync('index.html')) require('../html/index')()
     require('../pkg/index')()
     require('../ts/index')({ preset: 'react' })
@@ -13,5 +14,5 @@ module.exports = () => {
     })
     packageJson().prependScript('start', 'vit').prependScript('build', 'vit build').save()
     require('../cssinjs/index')()
-    require('../eslint/index')()
+    require('../eslint/index')({ isReact: true })
 }
