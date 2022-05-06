@@ -3,7 +3,7 @@ import { basename } from 'path'
 import { PackageJson } from 'type-fest'
 import fsExtra from 'fs-extra'
 import { capitalCase } from 'change-case'
-import { ensureGitignore } from '../util'
+import { copyAllFiles, ensureGitignore } from '../util'
 
 /** New VSCode Extension */
 module.exports = () => {
@@ -33,7 +33,8 @@ module.exports = () => {
             4,
         ),
     )
-    install(['vscode-framework', '@types/vscode'], {
+    copyAllFiles(__dirname)
+    install(['vscode-framework', '@types/vscode', '@zardoy/vscode-utils'], {
         pnpm: true,
     })
     ensureGitignore()
