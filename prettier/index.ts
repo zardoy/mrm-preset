@@ -9,7 +9,7 @@ module.exports = () => {
             tabWidth: 4,
             trailingComma: 'all',
             arrowParens: 'avoid',
-            printWidth: 150,
+            printWidth: 160,
         })
         .save()
 }
