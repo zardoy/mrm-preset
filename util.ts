@@ -32,4 +32,5 @@ export const hasVscodeFramework = async () => {
             return true
         }
     }
+    return false
 }

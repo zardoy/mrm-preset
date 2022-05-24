@@ -11,12 +11,20 @@ const presets = {
 }
 
 module.exports = async ({ preset }) => {
-    const presetDeps: Partial<Record<keyof typeof presets, string[]>> = {
-        node: ['@types/node'],
-        react: ['react', '@types/react', 'react-dom', '@types/react-dom', '@zardoy/react-util'],
+    const presetDeps: Partial<Record<keyof typeof presets, [string[], string[]]>> = {
+        node: [[], ['@types/node']],
+        react: [
+            ['react', 'react-dom', '@zardoy/react-util'],
+            ['@types/react', '@types/react-dom'],
+        ],
     }
 
-    install(['typescript', '@zardoy/tsconfig', ...(presetDeps[preset] ?? [])], {
+    const [deps, devDeps] = presetDeps[preset] ?? [[], []]
+    if (deps.length)
+        install(deps, {
+            pnpm: true,
+        })
+    install(['typescript', '@zardoy/tsconfig', ...devDeps], {
         dev: true,
         pnpm: true,
     })
