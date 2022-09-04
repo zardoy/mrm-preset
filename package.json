@@ -24,6 +24,7 @@
     "longest": "^2.0.1",
     "middleearth-names": "^1.1.0",
     "minimist": "^1.2.5",
+    "modify-json-file": "^1.2.2",
     "mrm": "^3.0.10",
     "mrm-core": "^6.1.7",
     "mrm-task-license": "^4.0.8",

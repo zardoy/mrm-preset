@@ -3,7 +3,8 @@ import { basename } from 'path'
 import { PackageJson } from 'type-fest'
 import fsExtra from 'fs-extra'
 import { capitalCase } from 'change-case'
-import { copyAllFiles, ensureGitignore } from '../util'
+import { copyAllFiles, ensureGitignore, ensureLicense, ensureTs } from '../util'
+import { modifyTsConfigJsonFile } from 'modify-json-file'
 
 /** New VSCode Extension */
 module.exports = () => {
@@ -12,11 +13,13 @@ module.exports = () => {
         return
     }
 
+    ensureLicense()
+    const name = basename(process.cwd()).replace(/^vscode-/, '')
     file('package.json').save(
         JSON.stringify(
             {
-                name: basename(process.cwd()),
-                displayName: capitalCase(basename(process.cwd())),
+                name,
+                displayName: capitalCase(name),
                 // have no idea how to retrive name like that
                 publisher: 'zardoy',
                 version: '0.0.0-dev',
@@ -38,5 +41,17 @@ module.exports = () => {
         pnpm: true,
     })
     ensureGitignore()
-    fsExtra.ensureFileSync(`src/extension.ts`)
+    ensureTs({ preset: 'tsconfig' })
+    modifyTsConfigJsonFile(
+        { dir: '.' },
+        {
+            compilerOptions: {
+                // disable window and other dom suggestions
+                lib: ['ESNext'],
+            },
+        },
+    )
+    if (!fsExtra.existsSync('src/extension.ts')) {
+        fsExtra.writeFileSync('src/extension.ts', 'export const activate = () => {\n\t\n}\n', 'utf8')
+    }
 }

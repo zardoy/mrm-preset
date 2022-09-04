@@ -25,6 +25,11 @@ export const ensureGitignore = () => {
     require('./gitignore/index')()
 }
 
+export const ensureTs = (...args) => {
+    if (fs.existsSync('tsconfig.json')) return
+    require('./typescript/index')(...args)
+}
+
 export const hasVscodeFramework = async () => {
     const packageJson = await readPackageJsonFile({ dir: '.' }).catch(() => null)
     if (packageJson) {
