@@ -47,7 +47,7 @@ module.exports = () => {
         {
             compilerOptions: {
                 // disable window and other dom suggestions
-                lib: ['ESNext'],
+                lib: ['ESNext', 'WebWorker'],
             },
         },
     )
