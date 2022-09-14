@@ -1,17 +1,16 @@
-name: VSCode Release
+name: Pull Request CI
 on:
-  push:
-    branches: [main]
+  pull_request:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  release:
-    runs-on: ubuntu-latest
+  test:
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+      fail-fast: true
     timeout-minutes: 30
-    # needs: test
+    runs-on: ${{ matrix.os }}
     steps:
-      - run: npm -v
-      - run: node -v
       - uses: actions/checkout@v2
       - run: npx prettier --check src/**
       - name: Cache pnpm modules
@@ -27,14 +26,9 @@ jobs:
           run_install: |
             args: [--frozen-lockfile, --strict-peer-dependencies]
       - run: pnpm lint
-      # - run: pnpm unit-test
+      - run: pnpm tsc
       - run: pnpm vscode-utils prepareFrameworkBuild
       - run: pnpm build
-      - uses: GabrielBB/xvfb-action@v1.6
-        with:
-          run: pnpm integration-test
-      - run: pnpx zardoy-release vscode-extension
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-          VSCE_PAT: ${{ secrets.VSCE_PAT }}
-          OVSX_PAT: ${{ secrets.OVSX_PAT }}
+      # - uses: GabrielBB/xvfb-action@v1.6
+      #   with:
+      #     run: pnpm integration-test
