@@ -7,7 +7,7 @@ module.exports = ({ preset }) => {
     const githubWorkflows = '.github/workflows'
     fsExtra.ensureDirSync(githubWorkflows)
 
-    const files = fsExtra.readdirSync(join(__dirname, preset)).filter(file => file.endsWith('.yml'))
+    const files = fsExtra.readdirSync(join(__dirname, preset.replace(/-jest$/, ''))).filter(file => file.endsWith('.yml'))
     for (const file of files) {
         lines(join(githubWorkflows, file))
             .set([fsExtra.readFileSync(join(__dirname, preset, file), 'utf-8')])
@@ -15,6 +15,9 @@ module.exports = ({ preset }) => {
     }
 
     if (preset === 'vscode-tested') {
+        install(['chokidar-cli', '@vscode/test-electron', 'chai', '@types/chai', 'mocha', '@types/mocha', 'glob', '@types/glob'], { pnpm: true })
+    }
+    if (preset === 'vscode-tested-jest') {
         install(['chokidar-cli', '@vscode/test-electron', 'jest', '@types/jest', 'jest-environment-node', 'cross-env'], { pnpm: true })
         copyAllFiles(__dirname, undefined, ['jest.e2e.config.js'])
     }
