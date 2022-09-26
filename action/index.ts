@@ -1,5 +1,5 @@
 import fsExtra from 'fs-extra'
-import { install, lines } from 'mrm-core'
+import { install, lines, packageJson } from 'mrm-core'
 import { join } from 'path'
 import { copyAllFiles } from '../util'
 
@@ -20,6 +20,9 @@ module.exports = ({ preset }) => {
     if (preset === 'vscode-tested-jest') {
         install(['chokidar-cli', '@vscode/test-electron', 'jest', '@types/jest', 'jest-environment-node', 'cross-env'], { pnpm: true })
         copyAllFiles(__dirname, undefined, ['jest.e2e.config.js'])
+    }
+    if (preset.startsWith('vscode-tested')) {
+        packageJson().set(['release', 'preset', 'runTest'], false)
     }
 }
 
