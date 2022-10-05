@@ -7,7 +7,7 @@ module.exports = ({ isReact }: { isReact?: boolean } = {}) => {
         pnpm: true,
     })
 
-    copyAllFiles(__dirname, {}, [isReact ? '.eslint-react.json' : '.eslintrc.json'])
+    copyAllFiles(__dirname, {}, [isReact ? '.eslintrc-react.json' : '.eslintrc.json'])
 
     packageJson().appendScript('lint', 'eslint src/**').save()
 }
