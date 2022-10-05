@@ -43,5 +43,14 @@
     "@zardoy/tsconfig": "^1.2.2",
     "type-fest": "^2.5.4",
     "typescript": "^4.5.2"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "proseWrap": "never",
+    "tabWidth": 4,
+    "trailingComma": "all",
+    "arrowParens": "avoid",
+    "printWidth": 160
   }
 }
