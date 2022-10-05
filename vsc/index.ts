@@ -51,6 +51,7 @@ module.exports = () => {
             },
         },
     )
+    fsExtra.ensureDir('src')
     if (!fsExtra.existsSync('src/extension.ts')) {
         fsExtra.writeFileSync('src/extension.ts', 'export const activate = () => {\n\t\n}\n', 'utf8')
     }
