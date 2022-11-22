@@ -10,6 +10,7 @@ module.exports = () => {
             trailingComma: 'all',
             arrowParens: 'avoid',
             printWidth: 160,
+            endOfLine: 'auto',
         })
         .save()
 }
