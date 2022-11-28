@@ -1,14 +1,15 @@
-import dedent from 'dedent'
 import { readFileSync } from 'fs'
+import { ensureFileSync } from 'fs-extra'
 import { install, updateFile } from 'mrm-core'
 
-module.exports = () => {
+module.exports = ({ isReact }: { isReact?: boolean } = {}) => {
     require('../tailwind/index')(false)
     // linaria@next
     install('styled-components @types/styled-components react-is twin.macro polished'.split(' '), {
         pnpm: true,
     })
-    const entrypointPath = 'src/index.tsx'
+    const entrypointPath = isReact ? 'src/index.tsx' : 'src/index.ts'
+    ensureFileSync(entrypointPath)
     const entrypointContents = readFileSync(entrypointPath, 'utf-8')
     if (!entrypointContents.startsWith('/// <reference')) {
         updateFile(entrypointPath, `/// <reference types="@zardoy/vit/twin-sc" />\n${entrypointContents}`, true)

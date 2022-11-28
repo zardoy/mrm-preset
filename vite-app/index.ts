@@ -13,6 +13,6 @@ module.exports = () => {
         pnpm: true,
     })
     packageJson().prependScript('start', 'vit').prependScript('build', 'vit build').save()
-    require('../cssinjs/index')()
+    require('../cssinjs/index')({ isReact: true })
     require('../eslint/index')({ isReact: true })
 }
