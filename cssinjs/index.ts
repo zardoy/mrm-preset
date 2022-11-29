@@ -1,5 +1,5 @@
-import dedent from 'dedent'
 import { readFileSync } from 'fs'
+import { ensureFileSync } from 'fs-extra'
 import { install, updateFile } from 'mrm-core'
 
 module.exports = () => {
@@ -9,6 +9,7 @@ module.exports = () => {
         pnpm: true,
     })
     const entrypointPath = 'src/index.tsx'
+    ensureFileSync(entrypointPath)
     const entrypointContents = readFileSync(entrypointPath, 'utf-8')
     if (!entrypointContents.startsWith('/// <reference')) {
         updateFile(entrypointPath, `/// <reference types="@zardoy/vit/twin-sc" />\n${entrypointContents}`, true)
