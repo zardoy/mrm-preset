@@ -1,11 +1,10 @@
 import fsExtra from 'fs-extra'
-import { install, packageJson } from 'mrm-core'
+import { installPackages } from '../util'
 
 module.exports = () => {
     const namespace = JSON.parse(fsExtra.readFileSync('./package.json', 'utf-8')).name
-    install('@stencil/core', {
+    installPackages(['@stencil/core'], {
         dev: true,
-        pnpm: true,
     })
     fsExtra.ensureDirSync('./src/webcomponents')
     fsExtra.writeFileSync(

@@ -1,11 +1,11 @@
 import fsExtra from 'fs-extra'
-import { install, lines, packageJson } from 'mrm-core'
+import { lines, packageJson } from 'mrm-core'
 import { join } from 'path'
+import { installPackages } from '../util'
 
 module.exports = () => {
-    install(['jest', '@types/jest', 'esbuild-runner', 'esbuild'], {
+    installPackages(['jest', '@types/jest', 'esbuild-runner', 'esbuild'], {
         dev: true,
-        pnpm: true,
     })
 
     const jestConfigFile = 'jest.config.js'

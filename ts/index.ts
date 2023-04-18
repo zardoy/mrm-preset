@@ -1,7 +1,7 @@
 import { install, lines, file, packageJson } from 'mrm-core'
 import { TsConfigJson } from 'type-fest'
 import fsExtra from 'fs-extra'
-import { hasVscodeFramework } from '../util'
+import { hasVscodeFramework, installPackages } from '../util'
 
 const presets = {
     tsconfig: true,
@@ -20,13 +20,9 @@ module.exports = async ({ preset }) => {
     }
 
     const [deps, devDeps] = presetDeps[preset] ?? [[], []]
-    if (deps.length)
-        install(deps, {
-            pnpm: true,
-        })
-    install(['typescript', '@zardoy/tsconfig', ...devDeps], {
+    if (deps.length) installPackages(deps, {})
+    installPackages(['typescript', '@zardoy/tsconfig', ...devDeps], {
         dev: true,
-        pnpm: true,
     })
     const tsconfig: TsConfigJson = {
         extends: `@zardoy/tsconfig/${preset}`,
@@ -37,7 +33,7 @@ module.exports = async ({ preset }) => {
         tsconfig.compilerOptions!.outDir = 'build'
     }
     lines('tsconfig.json')
-        .set([JSON.stringify(tsconfig, undefined, 4)])
+        .set([JSON.stringify(tsconfig, undefined, 4) + '\n'])
         .save()
 
     if (await hasVscodeFramework()) return

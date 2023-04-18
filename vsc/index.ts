@@ -1,9 +1,9 @@
-import { file, install, packageJson } from 'mrm-core'
+import { file, packageJson } from 'mrm-core'
 import { basename } from 'path'
 import { PackageJson } from 'type-fest'
 import fsExtra from 'fs-extra'
 import { capitalCase } from 'change-case'
-import { copyAllFiles, ensureGitignore, ensureLicense, ensureTs } from '../util'
+import { copyAllFiles, ensureGitignore, ensureLicense, ensureTs, installPackages } from '../util'
 import { modifyTsConfigJsonFile } from 'modify-json-file'
 
 /** New VSCode Extension */
@@ -37,9 +37,7 @@ module.exports = () => {
         ),
     )
     copyAllFiles(__dirname)
-    install(['vscode-framework', '@types/vscode', '@zardoy/vscode-utils'], {
-        pnpm: true,
-    })
+    installPackages(['vscode-framework', '@types/vscode', '@zardoy/vscode-utils'], {})
     ensureGitignore()
     ensureTs({ preset: 'tsconfig' })
     modifyTsConfigJsonFile(

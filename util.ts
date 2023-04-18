@@ -1,6 +1,6 @@
 import { oneOf } from '@zardoy/utils'
 import fs from 'fs'
-import { lines } from 'mrm-core'
+import { install, lines } from 'mrm-core'
 import { join } from 'path'
 import { readPackageJsonFile } from 'typed-jsonfile'
 
@@ -38,4 +38,16 @@ export const hasVscodeFramework = async () => {
         }
     }
     return false
+}
+
+export const installPackages = (packages: string[], { dev = false } = {}) => {
+    try {
+        install(packages, {
+            pnpm: true,
+            dev,
+        })
+    } catch (err) {
+        if (process.argv.includes('--exit-install-failure')) throw err
+        console.error(err, `Failed to install packages, try yourself: pnpm i ${packages.join(' ')}`)
+    }
 }

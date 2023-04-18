@@ -1,7 +1,7 @@
 import fsExtra from 'fs-extra'
-import { install, lines, packageJson } from 'mrm-core'
+import { lines, packageJson } from 'mrm-core'
 import { join } from 'path'
-import { copyAllFiles } from '../util'
+import { copyAllFiles, installPackages } from '../util'
 
 module.exports = ({ preset }) => {
     const githubWorkflows = '.github/workflows'
@@ -15,10 +15,10 @@ module.exports = ({ preset }) => {
     }
 
     if (preset === 'vscode-tested') {
-        install(['chokidar-cli', '@vscode/test-electron', 'chai', '@types/chai', 'mocha', '@types/mocha', 'glob', '@types/glob'], { pnpm: true })
+        installPackages(['chokidar-cli', '@vscode/test-electron', 'chai', '@types/chai', 'mocha', '@types/mocha', 'glob', '@types/glob'], {})
     }
     if (preset === 'vscode-tested-jest') {
-        install(['chokidar-cli', '@vscode/test-electron', 'jest', '@types/jest', 'jest-environment-node', 'cross-env'], { pnpm: true })
+        installPackages(['chokidar-cli', '@vscode/test-electron', 'jest', '@types/jest', 'jest-environment-node', 'cross-env'], {})
         copyAllFiles(__dirname, undefined, ['jest.e2e.config.js'])
     }
     if (preset.startsWith('vscode-tested')) {

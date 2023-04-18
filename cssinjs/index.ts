@@ -1,13 +1,12 @@
 import { readFileSync } from 'fs'
 import { ensureFileSync } from 'fs-extra'
-import { install, updateFile } from 'mrm-core'
+import { updateFile } from 'mrm-core'
+import { installPackages } from '../util'
 
 module.exports = () => {
     require('../tailwind/index')(false)
     // linaria@next
-    install('styled-components @types/styled-components react-is twin.macro polished'.split(' '), {
-        pnpm: true,
-    })
+    installPackages('styled-components @types/styled-components react-is twin.macro polished'.split(' '), {})
     const entrypointPath = 'src/index.tsx'
     ensureFileSync(entrypointPath)
     const entrypointContents = readFileSync(entrypointPath, 'utf-8')

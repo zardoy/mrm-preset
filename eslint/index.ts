@@ -1,10 +1,9 @@
-import { install, packageJson } from 'mrm-core'
-import { copyAllFiles } from '../util'
+import { packageJson } from 'mrm-core'
+import { copyAllFiles, installPackages } from '../util'
 
 module.exports = ({ isReact }: { isReact?: boolean } = {}) => {
-    install(['eslint', 'eslint-config-zardoy', ...(isReact ? ['eslint-plugin-react', 'eslint-plugin-react-hooks'] : [])], {
+    installPackages(['eslint', 'eslint-config-zardoy', ...(isReact ? ['eslint-plugin-react', 'eslint-plugin-react-hooks'] : [])], {
         dev: true,
-        pnpm: true,
     })
 
     copyAllFiles(__dirname, {}, [isReact ? '.eslintrc-react.json' : '.eslintrc.json'])
